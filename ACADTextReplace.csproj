@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!--指定应用的目标框架版本,多个使用 ; 分开-->
+		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+		<!--是否启用可为空上下文或可为空警告-->
+		<Nullable>enable</Nullable>
+		<!--编译器接受最新预览版中的所有有效语言语法-->
+		<LangVersion>preview</LangVersion>
+		<!--是否导入并使用 WPF-->
+		<UseWPF>true</UseWPF>
+		<!--是否导入并使用 WinForms-->
+		<UseWindowsForms>true</UseWindowsForms>
+		<!--是否启用.Net分析器-->
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<!--是否允许"不安全"代码-->
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<!--是否启用隐式 global using 指令-->
+		<ImplicitUsings>true</ImplicitUsings>
+		<!--是否将所有引用的程序集复制到输出目录-->
+		<copylocallockfileassemblies>true</copylocallockfileassemblies>
+		<!--是否生成确定性的程序集，用于生成动态程序集版本号-->
+		<Deterministic>False</Deterministic>
+		<!--程序集版本号,*为动态版本号-->
+		<AssemblyVersion>1.0.0.*</AssemblyVersion>
+		<!--文件版本号-->
+		<FileVersion>1.0.0.0</FileVersion>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<NoWin32Manifest>true</NoWin32Manifest>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug'">
+		<DefineConstants>$(Configuration);DEBUG</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0-windows' ">
+		<DefineConstants>$(Configuration);acad;a2025</DefineConstants>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'NET48'">
+		<DefineConstants>$(Configuration);acad;a2024</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+	  <DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|AnyCPU'">
+	  <DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0-windows' ">
+		<PackageReference Include="AutoCAD.NET" Version="25.0.1" ExcludeAssets="runtime" />
+		<PackageReference Include="IFox.CAD.ACAD" Version="0.9.*" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+		<PackageReference Include="AutoCAD.NET" Version="23.0.0" ExcludeAssets="runtime" />
+		<PackageReference Include="IFox.CAD.ACAD" Version="0.9.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="accoremgd">
+	    <HintPath>..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\accoremgd.dll</HintPath>
+	    <Private>True</Private>
+	  </Reference>
+	  <Reference Include="Acdbmgd">
+	    <HintPath>..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acdbmgd.dll</HintPath>
+	    <Private>True</Private>
+	  </Reference>
+	  <Reference Include="acmgd">
+	    <HintPath>..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acmgd.dll</HintPath>
+	    <Private>True</Private>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+	  <PackageReference Include="AutoCAD.NET.Core">
+	    <Version>25.0.0</Version>
+	  </PackageReference>
+	  <PackageReference Include="AutoCAD.NET.Model">
+	    <Version>25.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Command.cs">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Compile>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace></CustomToolNamespace>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+</Project>
+
+
