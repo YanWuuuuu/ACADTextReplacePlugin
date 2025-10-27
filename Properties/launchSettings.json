@@ -3,10 +3,9 @@
     "ACADTextReplace": {
       "commandName": "Project"
     },
-    "ACAD2024": {
+    "CAD2024": {
       "commandName": "Executable",
-      "executablePath": "C:\\Program Files\\Autodesk\\AutoCAD 2024\\acad.exe",
-      "nativeDebugging": false
+      "executablePath": "C:\\Program Files\\Autodesk\\AutoCAD 2024\\acad.exe"
     }
   }
 }

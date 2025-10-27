@@ -78,15 +78,15 @@
 	<ItemGroup>
 	  <Reference Include="accoremgd">
 	    <HintPath>..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\accoremgd.dll</HintPath>
-	    <Private>True</Private>
+	    <Private>False</Private>
 	  </Reference>
 	  <Reference Include="Acdbmgd">
 	    <HintPath>..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acdbmgd.dll</HintPath>
-	    <Private>True</Private>
+	    <Private>False</Private>
 	  </Reference>
 	  <Reference Include="acmgd">
 	    <HintPath>..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acmgd.dll</HintPath>
-	    <Private>True</Private>
+	    <Private>False</Private>
 	  </Reference>
 	</ItemGroup>
 
@@ -103,19 +103,6 @@
 	  <Compile Update="Command.cs">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Compile>
-	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Properties\Resources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	    <CustomToolNamespace></CustomToolNamespace>
-	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
